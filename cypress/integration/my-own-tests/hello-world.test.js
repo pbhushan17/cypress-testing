@@ -23,4 +23,34 @@ describe('Basic tests', () => {
         cy.contains('Industry Level Skills').should('exist')
 
     })
+
+    it.only('Verify Login page', () => {
+        cy.visit('https://codedamn.com')
+
+        cy.get('[data-testid = menutoggle]').click()
+
+        cy.log('on menu')
+        cy.contains('Login').should('exist')
+
+        cy.contains('Login').click({force : true})
+
+        cy.url().then(value => {
+            cy.log('The current real URL is:', value)
+        })
+
+        cy.go('back')
+    })
+
+    // it.only('Verify Register page', () => {
+    //     cy.visit('https://codedamn.com')
+
+    //     cy.get('[data-testid = menutoggle]').click()
+
+    //     cy.contains('Register').should('exist')
+
+    //     cy.contains('Register').click({force : true})
+
+    //     cy.go('back')
+
+    // })
 })
